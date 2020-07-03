@@ -1,0 +1,169 @@
+
+<mat-card class="card-register">
+    <mat-card-header>
+        <mat-card-title><h1 class="titulo-card">Crear convocatoria</h1></mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="form-dats">
+        <form [formGroup]="convocatoria" (ngSubmit)="onSubmit(convocatoria.value)">     
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Titulo</mat-label>
+                    <input matInput placeholder="Ingrese el titulo" class="form-control" formControlName="titulo">
+                    <mat-icon matSuffix>reorder</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.titulo">
+                        <mat-error *ngIf="convocatoria.get('titulo').hasError(validation.type) && (convocatoria.get('titulo').dirty || convocatoria.get('titulo').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Gestion Academica</mat-label>
+                    <input matInput placeholder="Ingrese la gestion academica" formControlName="gestion">
+                    <mat-icon matSuffix>article</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.gestion">
+                        <mat-error *ngIf="convocatoria.get('gestion').hasError(validation.type) && (convocatoria.get('gestion').dirty || convocatoria.get('gestion').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Fecha de inicio</mat-label>
+                    <input matInput placeholder="Ingrese la fecha de inicio" [matDatepicker]="dp3" formControlName="fechainicio">
+                    <mat-datepicker-toggle matSuffix [for]="dp3"></mat-datepicker-toggle>
+                    <mat-datepicker #dp3 disabled="false"></mat-datepicker>
+                    <ng-container *ngFor="let validation of validation_messages.fechainicio">
+                        <mat-error *ngIf="convocatoria.get('fechainicio').hasError(validation.type) && (convocatoria.get('fechainicio').dirty || convocatoria.get('fechainicio').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Fecha de finalizacion</mat-label>
+                    <input matInput placeholder="Ingrese la fecha de conclusion" [matDatepicker]="fin" formControlName="fechafin">
+                    <mat-datepicker-toggle matSuffix [for]="fin"></mat-datepicker-toggle>
+                    <mat-datepicker #fin disabled="false"></mat-datepicker>
+                    <ng-container *ngFor="let validation of validation_messages.fechafin">
+                        <mat-error *ngIf="convocatoria.get('fechafin').hasError(validation.type) && (convocatoria.get('fechafin').dirty || convocatoria.get('fechafin').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Fecha de publicacion</mat-label>
+                    <input matInput placeholder="Ingrese la fecha de publicacion" [matDatepicker]="pub" formControlName="fechapub">
+                    <mat-datepicker-toggle matSuffix [for]="pub"></mat-datepicker-toggle>
+                    <mat-datepicker #pub disabled="false"></mat-datepicker>
+                    <ng-container *ngFor="let validation of validation_messages.fechapub">
+                        <mat-error *ngIf="convocatoria.get('fechapub').hasError(validation.type) && (convocatoria.get('fechapub').dirty || convocatoria.get('fechapub').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Fecha de presentacion</mat-label>
+                    <input matInput placeholder="Ingrese la fecha de presentacion" [matDatepicker]="pre" formControlName="fechapres">
+                    <mat-datepicker-toggle matSuffix [for]="pre"></mat-datepicker-toggle>
+                    <mat-datepicker #pre disabled="false"></mat-datepicker>
+                    <ng-container *ngFor="let validation of validation_messages.fechapres">
+                        <mat-error *ngIf="convocatoria.get('fechapres').hasError(validation.type) && (convocatoria.get('fechapres').dirty || convocatoria.get('fechapres').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Fecha de publicacion de habilitados</mat-label>
+                    <input matInput placeholder="Ingrese la fecha de publicacion de habilitados" [matDatepicker]="hab" formControlName="fechapubhab">
+                    <mat-datepicker-toggle matSuffix [for]="hab"></mat-datepicker-toggle>
+                    <mat-datepicker #hab disabled="false"></mat-datepicker>
+                    <ng-container *ngFor="let validation of validation_messages.fechapubhab">
+                        <mat-error *ngIf="convocatoria.get('fechapubhab').hasError(validation.type) && (convocatoria.get('fechapubhab').dirty || convocatoria.get('fechapubhab').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Fecha de reclamos</mat-label>
+                    <input matInput placeholder="Ingrese la fecha de reclamos" [matDatepicker]="rec" formControlName="fecharec">
+                    <mat-datepicker-toggle matSuffix [for]="rec"></mat-datepicker-toggle>
+                    <mat-datepicker #rec disabled="false"></mat-datepicker>
+                    <ng-container *ngFor="let validation of validation_messages.fecharec">
+                        <mat-error *ngIf="convocatoria.get('fecharec').hasError(validation.type) && (convocatoria.get('fecharec').dirty || convocatoria.get('fecharec').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Fecha de publicacion de rol de pruebas</mat-label>
+                    <input matInput placeholder="Ingrese la fecha de publicacion de rol de pruebas" [matDatepicker]="rol" formControlName="fecharol">
+                    <mat-datepicker-toggle matSuffix [for]="rol"></mat-datepicker-toggle>
+                    <mat-datepicker #rol disabled="false"></mat-datepicker>
+                    <ng-container *ngFor="let validation of validation_messages.fecharol">
+                        <mat-error *ngIf="convocatoria.get('fecharol').hasError(validation.type) && (convocatoria.get('fecharol').dirty || convocatoria.get('fecharol').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Fecha de publicacion de resultados de convocatoria</mat-label>
+                    <input matInput placeholder="Ingrese la fecha de publicacion de resultados finales" [matDatepicker]="rescon" formControlName="fechapubres">
+                    <mat-datepicker-toggle matSuffix [for]="rescon"></mat-datepicker-toggle>
+                    <mat-datepicker #rescon disabled="false"></mat-datepicker>
+                    <ng-container *ngFor="let validation of validation_messages.fechapubres">
+                        <mat-error *ngIf="convocatoria.get('fechapubres').hasError(validation.type) && (convocatoria.get('fechapubres').dirty || convocatoria.get('fechapubres').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Categoria de convocatoria</mat-label>
+                    <mat-select formControlName="catecon">
+                        <mat-option *ngFor="let convocatory of typesConvocatoria" [value]="convocatory">{{convocatory}}</mat-option>
+                    </mat-select>
+                    <ng-container *ngFor="let validation of validation_messages.catecon">
+                        <mat-error *ngIf="convocatoria.get('catecon').hasError(validation.catecon) && (convocatoria.get('catecon').dirty || convocatoria.get('catecon').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Ponderacion documentos</mat-label>
+                    <input matInput placeholder="Ingrese el porcentaje o ponderacion" (keyup)="calculateConocimiento($event.target.value)" formControlName="pondeDocumentos">
+                    <mat-icon matSuffix>equalizer</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.pondeDocumentos">
+                        <mat-error *ngIf="convocatoria.get('pondeDocumentos').hasError(validation.type) && (convocatoria.get('pondeDocumentos').dirty || convocatoria.get('pondeDocumentos').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field>
+                <h5>Ponderacion Conocimientos: {{conocimientos}}%</h5>
+                <br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Hora de reclamos</mat-label>
+                    <input matInput placeholder="HH:MM" formControlName="horarec">
+                    <mat-icon matSuffix>watch-later</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.horarec">
+                        <mat-error *ngIf="convocatoria.get('horarec').hasError(validation.type) && (convocatoria.get('horarec').dirty || convocatoria.get('horarec').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Lugar de reclamos</mat-label>
+                    <input matInput placeholder="Ingrese el lugar de reclamos" formControlName="lugar">
+                    <mat-icon matSuffix>room</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.lugar">
+                        <mat-error *ngIf="convocatoria.get('lugar').hasError(validation.type) && (convocatoria.get('lugar').dirty || convocatoria.get('lugar').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+           
+    
+
+                <div>
+                    <button mat-raised-button color="accent" (click)="resetFields()">Cancelar</button>
+                    <button mat-raised-button class="submit-button" color="primary" type="submit" [disabled]="!convocatoria.valid">Crear convocatoria</button>
+                </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

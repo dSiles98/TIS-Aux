@@ -1,0 +1,73 @@
+<mat-card class="card-register">
+    <mat-card-header>
+        <mat-card-title><h1 class="titulo-card">Registrar Docente</h1></mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="form-dats">
+        <form [formGroup]="miembro" (ngSubmit)="onSubmit(miembro.value)">     
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Nombres</mat-label>
+                    <input matInput placeholder="Ingresa tus nombres" class="form-control" formControlName="nombres">
+                    <mat-icon matSuffix>account_circle</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.nombres">
+                        <mat-error *ngIf="miembro.get('nombres').hasError(validation.type) && (miembro.get('nombres').dirty || miembro.get('nombres').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Apellidos</mat-label>
+                    <input matInput placeholder="Ingresa tus apellidos" formControlName="apellidos">
+                    <mat-icon matSuffix>account_box</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.apellidos">
+                        <mat-error *ngIf="miembro.get('apellidos').hasError(validation.type) && (miembro.get('apellidos').dirty || miembro.get('apellidos').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Correo</mat-label>
+                    <input matInput placeholder="Ingresa tu correo" formControlName="correo">
+                    <mat-icon matSuffix>contact_mail</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.correo">
+                        <mat-error *ngIf="miembro.get('correo').hasError(validation.type) && (miembro.get('correo').dirty || miembro.get('correo').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Dirección</mat-label>
+                    <input matInput placeholder="Ingresa tu dirección" formControlName="direccion">
+                    <mat-icon matSuffix>domain</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.direccion">
+                        <mat-error *ngIf="miembro.get('direccion').hasError(validation.type) && (miembro.get('direccion').dirty || miembro.get('direccion').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Célular</mat-label>
+                    <input matInput placeholder="Ingresa tu número de celular" formControlName="telefono">
+                    <mat-icon matSuffix>contact_phone</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.telefono">
+                        <mat-error *ngIf="miembro.get('telefono').hasError(validation.type) && (miembro.get('telefono').dirty || miembro.get('telefono').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Código SIS</mat-label>
+                    <input matInput placeholder="Ingresa tu código SIS" formControlName="codSis">
+                    <mat-icon matSuffix>biotech</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.codSis">
+                        <mat-error *ngIf="miembro.get('codSis').hasError(validation.type) && (miembro.get('codSis').dirty || miembro.get('codSis').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div>
+                <button mat-raised-button color="accent" (click)="resetFields()">Cancelar</button>
+                <button mat-raised-button class="submit-button" color="primary" type="submit" [disabled]="!miembro.valid">Registrar</button>
+            </div>
+        </form>
+    </mat-card-content>
+</mat-card>

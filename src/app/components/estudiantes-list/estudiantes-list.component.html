@@ -1,0 +1,6 @@
+<h1 class="titulo-card">Lista de Estudinates</h1>
+<mat-nav-list>
+    <mat-list-item *ngFor="let student of listStudent">
+        {{student.student.nombres}} {{student.student.apellidos}}
+    </mat-list-item>
+</mat-nav-list>

@@ -1,0 +1,36 @@
+<mat-card class="card-register">
+    <mat-card-header>
+        <mat-card-title><h1 class="titulo-card">Crear comision</h1></mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="form-dats">
+        <form [formGroup]="comision" (ngSubmit)="onSubmit(comision.value)">     
+            <div class="form-group">
+                <mat-form-field appearance="legacy">
+                    <mat-label>Departamento</mat-label>
+                    <input matInput placeholder="Ingrese el departamento" class="form-control" formControlName="depa">
+                    <mat-icon matSuffix>chrome-reader</mat-icon>
+                    <ng-container *ngFor="let validation of validation_messages.depa">
+                        <mat-error *ngIf="comision.get('depa').hasError(validation.type) && (comision.get('depa').dirty || comision.get('depa').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field><br>
+            </div>
+            <div class="form-group">
+                <mat-form-field>
+                    <mat-label>Tipo</mat-label>
+                    <mat-select formControlName="tipo">
+                        <mat-option *ngFor="let convocatory of typesConvocatoria" [value]="convocatory">{{convocatory}}</mat-option>
+                    </mat-select>
+                    <ng-container *ngFor="let validation of validation_messages.tipo">
+                        <mat-error *ngIf="comision.get('tipo').hasError(validation.type) && (comision.get('tipo').dirty || comision.get('tipo').touched)">{{validation.message}}</mat-error>
+                    </ng-container>
+                </mat-form-field>
+            </div>
+            <div class="row submit-button-container">
+                <div class="col-md-4">
+                  <button mat-raised-button color="accent" (click)="resetFields()">Cancelar</button>
+                  <button mat-raised-button class="submit-button" color="primary" type="submit" [disabled]="!comision.valid">Create</button>
+                </div>
+              </div>
+        </form>
+    </mat-card-content>
+</mat-card>

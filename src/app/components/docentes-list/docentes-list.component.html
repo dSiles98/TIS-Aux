@@ -1,0 +1,6 @@
+<h1 class="titulo-card">Lista de Docentes</h1>
+<mat-nav-list>
+    <mat-list-item *ngFor="let docente of listDocents">
+        {{docente.docente.nombres}} {{docente.docente.apellidos}}
+    </mat-list-item>
+</mat-nav-list>
